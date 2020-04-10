@@ -103,6 +103,11 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
+
+
+
+
+
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +117,32 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+//step 1
+function articleMaker () {
+  let article = document.createElement('div');
+  let title = document.createElement('h2');
+  let date = document.createElement('p');
+  let p1 = document.createElement('p');
+  let p2 = document.createElement('p');
+  let p3 = document.createElement('p');
+  let eButton = document.createElement('span');
+
+  article.classList.add('article');
+  date.classList.add('date');
+  eButton.classList.add('expandButton');
+
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(eButton);
+}
+
+//step 2
+
+eButton.addEventListener('click', event =>{
+  article.classList.toggle('.article-open')
+});
+

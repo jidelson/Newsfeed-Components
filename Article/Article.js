@@ -119,7 +119,7 @@ const data = [
 */
 
 //step 1
-function articleMaker () {
+function articleMaker ({object}) {
   let article = document.createElement('div');
   let title = document.createElement('h2');
   let date = document.createElement('p');
@@ -132,17 +132,33 @@ function articleMaker () {
   date.classList.add('date');
   eButton.classList.add('expandButton');
 
+title.textContent = object.title;
+date.textContent = object.date;
+p1.textContent = object.firstParagraph;
+p2.textContent = object.secondParagraph;
+p3.textContent = object.thirdParagraph;
+
+
+
   article.appendChild(title);
   article.appendChild(date);
   article.appendChild(p1);
   article.appendChild(p2);
   article.appendChild(p3);
   article.appendChild(eButton);
-}
+
 
 //step 2
+// let eButton = document.createElement('button');
 
-eButton.addEventListener('click', event =>{
-  article.classList.toggle('.article-open')
-});
+// eButton.addEventListener('click', event =>{
+//   article.classList.toggle('.article-open')
+// });
 
+span.addEventListener('click', () => {
+  article.classList.toggle('article-open')
+})
+
+//step 3
+return articleMaker;
+}

@@ -1,3 +1,6 @@
+const open = '\u25bc'
+const close = '\u25b2'
+
 /* This is the data we will be using to create our article components */
 /* Look over this data, then proceed to line 91*/
 const data = [
@@ -85,7 +88,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+
+  {
+    title: 'Joe\'s New Article',
+    date: 'May 7th, 2020',
+    firstParagraph: `Joe is learning components!`,
+    secondParagraph: `Joe is attending Lambda!`,
+    thirdParagraph: `Joe lives in California!`
+}
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -112,3 +123,73 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+
+
+function makeArticle (articleAttrs) {
+  const {title, date, firstParagraph, secondParagraph, thirdParagraph} = articleAttrs
+
+  const article = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p')
+  const pOne = document.createElement('p')
+  const pTwo = document.createElement('p')
+  const pThree = document.createElement('p')
+  const expandButton = document.createElement('span')
+  
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(pOne);
+  article.appendChild(pTwo);
+  article.appendChild(pThree);
+  article.appendChild(expandButton);
+
+
+  article.classList.add('article')
+  articleDate.classList.add('date')
+  expandButton.classList.add('expandButton')
+  expandButton.classList.add('closeButton')
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  pOne.textContent = firstParagraph;
+  pTwo.textContent = secondParagraph;
+  pThree.textContent = thirdParagraph;
+  expandButton.textContent = expandButton;
+  
+  expandButton.addEventListener('click', () => {
+  expandButton.classList.toggle('hide-btn')
+  expandButton.classList.toggle('show-btn')
+  article.classList.toggle('toggle-on')
+
+})
+
+return article
+}
+
+const node = document.createElement('div')
+const articles = document.querySelector('.articles')
+
+
+
+const newArticle = ({
+  title: 'the title',
+  date: 'the date', 
+  firstParagraph: 'paragraph one', 
+  secondParagraph: 'paragraph two', 
+  thirdParagraph: 'paragraph three', 
+  expandButton: 'expand the button'})
+
+console.log(newArticle)
+articles.appendChild(node)
+
+data.forEach(articleObj => {
+  const article = makeArticle(articleObj)
+ articles.appendChild(article)
+});
+
+
+
+
+
